@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -6,6 +7,9 @@ import React from 'react';
 // or even care what the redux state is
 
 function CreateTopicPage() {
+
+  const [topic, setTopic] = useState('');
+
   return (
     <form>
     <div className="container">

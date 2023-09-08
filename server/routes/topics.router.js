@@ -1,6 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 /**
  * GET route template
@@ -22,8 +23,25 @@ router.get('/', (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/', rejectUnauthenticated, (req, res) => {
+  console.log('/topic POST route');
+  console.log(req.body);
+  console.log('is authenticated?', req.isAuthenticated());
+  console.log('user', req.user);
+
+  const sqlText = `INSERT INTO "topics" 
+                      (user_id, topic_name, topic_description)
+                      VALUES ($1, $2, $3)`;
+  const sqlValues = [req.body.name, req.user.id ]
+
+  pool.query(sqlText, sqlValues).then((result) => {
+      res.sendStatus(201);
+  }).catch((error) => {
+      res.sendStatus(500);
+  });
+
+
+
 });
 
 module.exports = router;

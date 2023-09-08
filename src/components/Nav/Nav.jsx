@@ -33,6 +33,10 @@ function Nav() {
               Create Topic
             </Link>
 
+            <Link className="navLink" to="/yourtopic">
+              Your Topics
+            </Link>
+
             <LogOutButton className="navLink" />
           </>
         )}
