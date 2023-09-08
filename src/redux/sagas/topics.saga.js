@@ -14,8 +14,12 @@ function* fetchAllTopics() {
     }
         
 }
+
+
+
 function* getTopicsSaga() {
     yield takeEvery('FETCH_TOPICS', fetchAllTopics);
+    yield takeEvery('ADD_TOPIC', addTopic);
 }
 
 export default getTopicsSaga;

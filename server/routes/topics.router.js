@@ -32,7 +32,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   const sqlText = `INSERT INTO "topics" 
                       (user_id, topic_name, topic_description)
                       VALUES ($1, $2, $3)`;
-  const sqlValues = [req.body.name, req.user.id ]
+  const sqlValues = [req.user.id, req.body.topic_name, req.body.topic_description]
 
   pool.query(sqlText, sqlValues).then((result) => {
       res.sendStatus(201);
