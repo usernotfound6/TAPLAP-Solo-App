@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is
 
-function CreateTopicPage(props) {
+function CreateTopicPage() {
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -18,16 +18,15 @@ function CreateTopicPage(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.createTopic(topic, description);
     let newTopic = {
-      topic: topic,
-      description: description
+      topic_name: topic,
+      topic_description: description
     }
     dispatch({
       type: "ADD_TOPIC",
       payload: newTopic
-    }
-    )
+    })
+    history.push('/user')
     // clearTopicFields();
   };
 
@@ -53,7 +52,11 @@ function CreateTopicPage(props) {
       </div>
 
       <div>
-        <textarea placeholder="Can You Elaborate?" type="text" />
+        <textarea 
+        placeholder="Can You Elaborate?" 
+        type="text" 
+        onChange={(event) => setDescription(event.target.value)}
+        value={description} />
       </div>
 
       <button>share!</button>

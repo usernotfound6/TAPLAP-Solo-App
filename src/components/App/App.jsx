@@ -19,7 +19,7 @@ import CreateTopicPage from '../CreateTopicPage/CreateTopicPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import YourTopicPage from '../YourTopicPage/YourTopicPage';
+import YourTopicPage from '../YourTopicPage/MyTopicsPage';
 
 import './App.css';
 
