@@ -1,54 +1,60 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState("Welcome");
   const history = useHistory();
 
   const onLogin = (event) => {
-    history.push('/login');
+    history.push("/login");
   };
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
+      <h2>{heading} to TAPLAP</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+            Welcome to our online community, a place where vulnerability,
+            genuine interests, and ideas are explored, shared and celebrated. We're thrilled
+            to have you here!
+          </p>
+          <p>
+            Our website is a safe and welcoming space where you can share your
+            thoughts, feelings, and experiences on topics that matter to you, no
+            matter how personal or vulnerable they may be. We believe that
+            opening up about your vulnerabilities is an act of courage and
+            strength, and here, you'll find a supportive and understanding
+            community ready to listen and provide friendly insight and
+            perspective.
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
+            We encourage you to post about the things that truly matter to you,
+            whether it's a heartfelt reflection on your life journey, a
+            passionate discussion about your favorite hobby, or a wild and
+            creative idea you can't stop thinking about. This is a place to be
+            authentic and explore the depths of your interests and curiosities.
           </p>
-
           <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
+            What sets our community apart is the spirit of camaraderie and
+            empathy that defines our interactions. When you share your thoughts
+            and ideas, you'll find fellow members eager to engage with kindness
+            and understanding. Whether through thoughtful comments, shared
+            experiences, or helpful advice, you'll discover a wealth of
+            perspectives that can broaden your horizons and enrich your
+            understanding.
+          </p>
+          <p>
+            Join us in building a community that thrives on authenticity,
+            empathy, and the endless wonder of human experience. Together, we
+            can make this space a beacon of positivity and understanding.
+            Welcome aboard!
           </p>
         </div>
         <div className="grid-col grid-col_4">
