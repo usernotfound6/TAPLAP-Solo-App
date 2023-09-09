@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function MyTopics() {
+function MyTopicsPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   // history = useHistory();
-  const topics = useSelector((store) => store.topics);
-  console.log("heres the topics", topics)
+  const mytopics = useSelector((store) => store.mytopics);
+  console.log("heres my topics", mytopics)
 
   useEffect(() => {
-      dispatch({ type: 'FETCH_TOPICS' });
+      dispatch({ type: 'FETCH_MY_TOPICS' });
   }, []);
   return (
   //   <div>
@@ -23,18 +23,20 @@ function MyTopics() {
   
       <main>
   <h1>Topics</h1>
-  <section className="topics">
-    {topics.map((topic) => (
-      <div key={topic.id}>
-        
-        <h1>{topic.topic_name}</h1>
-        <p>{topic.topic_description}</p>
-        {/* <p>User ID: {topic.user_id}</p> */}
-      </div>
-    ))}
+  <section className="mytopics">
+    {mytopics.map((topic) => {
+      return (
+        <div key={topic.id}>
+
+          <h1>{topic.topic_name}</h1>
+          <p>{topic.topic_description}</p>
+          {/* <p>User ID: {topic.user_id}</p> */}
+        </div>
+      );
+    })}
   </section>
 </main>
    
   );
 }
-export default MyTopics;
+export default MyTopicsPage;

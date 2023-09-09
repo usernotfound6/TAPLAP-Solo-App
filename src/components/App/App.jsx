@@ -19,7 +19,8 @@ import CreateTopicPage from '../CreateTopicPage/CreateTopicPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import YourTopicPage from '../YourTopicPage/MyTopicsPage';
+import MyTopicsPage from '../MyTopicsPage/MyTopicsPage';
+import IndTopicPage from '../IndTopicPage/IndTopicPage';
 
 import './App.css';
 
@@ -62,11 +63,11 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows CreateTopicPage else shows LoginPage
+            // logged in shows MyTopicPage else shows LoginPage
             exact
-            path="/yourtopic"
+            path="/mytopics"
           >
-            <YourTopicPage />
+            <MyTopicsPage />
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -75,6 +76,13 @@ function App() {
             path="/createtopic"
           >
             <CreateTopicPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            // logged in shows IndTopicPage else shows LoginPage
+            
+            path="/indtopic/:id"
+          >
+            <IndTopicPage />
           </ProtectedRoute>
 
           <Route

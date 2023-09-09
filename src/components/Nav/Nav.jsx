@@ -33,8 +33,8 @@ function Nav() {
               Create Topic
             </Link>
 
-            <Link className="navLink" to="/yourtopic">
-              Your Topics
+            <Link className="navLink" to="/mytopics">
+              My Topics
             </Link>
 
             <LogOutButton className="navLink" />

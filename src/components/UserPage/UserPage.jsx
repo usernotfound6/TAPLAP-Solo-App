@@ -6,7 +6,7 @@ function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  // history = useHistory();
+  const history = useHistory();
   const topics = useSelector((store) => store.topics);
   console.log("heres the topics", topics)
 
@@ -25,7 +25,7 @@ function UserPage() {
   <h1>Topics</h1>
   <section className="topics">
     {topics.map((topic) => (
-      <div key={topic.id}>
+      <div key={topic.id}onClick={() => history.push(`/indtopic/${topic.id}`)}>
         
         <h1>{topic.topic_name}</h1>
         <p>{topic.topic_description}</p>
