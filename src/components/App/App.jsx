@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import TopicsPage from '../TopicsPage/TopicsPage';
 import CreateTopicPage from '../CreateTopicPage/CreateTopicPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
@@ -57,9 +57,9 @@ function App() {
           <ProtectedRoute
             // logged in shows UserPage else shows LoginPage
             exact
-            path="/user"
+            path="/topics"
           >
-            <UserPage />
+            <TopicsPage />
           </ProtectedRoute>
 
           <ProtectedRoute
