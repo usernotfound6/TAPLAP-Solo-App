@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import MyTopicsPage from '../MyTopicsPage/MyTopicsPage';
 import IndTopicPage from '../IndTopicPage/IndTopicPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
 
@@ -83,6 +84,14 @@ function App() {
             path="/indtopic/:id"
           >
             <IndTopicPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows ProfilePage else shows LoginPage
+            
+            path="/profile"
+          >
+            <ProfilePage />
           </ProtectedRoute>
 
           <Route

@@ -20,23 +20,25 @@ router.get('/', (req, res) => {
 
 // get for my topics ???
 router.get('/api/topics/:userId', (req, res) => {
+  if (req.isAuthenticated()) {
+    console.log('/topic GET route');
+    console.log('is authenticated?', req.isAuthenticated());
+    console.log('user', req.user);
 
-  if(req.isAuthenticated()) {
-    
-      console.log('/topic GET route');
-      console.log('is authenticated?', req.isAuthenticated());
-      console.log('user', req.user);
-      let queryText = `SELECT * FROM "topics" WHERE user_id = $1`;
-      pool.query(queryText, [req.user.id]).then((result) => {
-          res.send(result.rows);
-      }).catch((error) => {
-          console.log(error);
-          res.sendStatus(500);
+    let queryText = `SELECT * FROM "topics" WHERE user_id = $1`;
+    pool.query(queryText, [req.user.id])
+      .then((result) => {
+        console.log('Database Query Result:', result.rows);
+        res.send(result.rows);
+      })
+      .catch((error) => {
+        console.log('Database Query Error:', error);
+        res.sendStatus(500);
       });
   } else {
-      res.sendStatus(403);
+    console.log('User is not authenticated');
+    res.sendStatus(403);
   }
-
 });
 
 router.get('/:id', (req, res) => {
