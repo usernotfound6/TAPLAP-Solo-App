@@ -74,11 +74,12 @@ function* fetchAllComments(action) {
 function* addComment(action) {
     // adding users topic
     try {
+        console.log('erroryooooo')
         const config = {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true,
         };
-        yield axios.post('/api/comments', action.payload, config);
+        yield axios.post('/api/comments/', action.payload, config);
     } catch (error) {
         console.log('Error with adding comment', error)
     }

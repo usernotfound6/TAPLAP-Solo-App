@@ -1,13 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
-
+import { useState
+ } from "react";
 function IndTopicPage() {
   const params = useParams();
   const dispatch = useDispatch();
   // const history = useHistory();
   const indtopic = useSelector((store) => store.indtopic);
   const comments = useSelector((store) => store.comments);
+
+  const [text, setText] = useState("");
   
   console.log("indtopic:", indtopic);
   console.log("comments:", comments);
@@ -17,7 +20,19 @@ function IndTopicPage() {
     dispatch({ type: "FETCH_COMMENTS", payload: params.id });
   }, [dispatch, params.id]);
 
-  // const handleComment(){
+  const handleComment = () => {
+    let newComment = {
+        text: text,
+        id: params.id
+
+
+    }
+    console.log('ddddddddd', params.id)
+    dispatch({
+      type: "ADD_COMMENT",
+      payload: newComment
+    })
+  }
   return (
     <main>
       <section className="indtopic">
@@ -29,8 +44,11 @@ function IndTopicPage() {
           <li key={comment.id}>{comment.text}</li>
         ))}
       </ul>
-      <textarea placeholder="add comment..."></textarea>
-      {/* <button onClick={handleComment}>share comment!</button> */}
+      <textarea   onChange={(event) => setText(event.target.value)} 
+        placeholder="add comment..."
+        value={text}
+        type="text" ></textarea>
+      <button onClick={handleComment}>share comment!</button>
     </main>
   );
 }

@@ -4,7 +4,7 @@ import user from './user.reducer';
 import topics from './topics.reducer';
 import mytopics from './mytopics.reducer';
 import indtopic from './indtopic.reducer';
-import comments from './comments.reducer'
+import comments from './comments.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
