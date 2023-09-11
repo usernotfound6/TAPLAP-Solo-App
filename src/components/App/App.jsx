@@ -25,6 +25,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 
 import './App.css';
 
+
 function App() {
   const dispatch = useDispatch();
 

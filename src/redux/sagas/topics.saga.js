@@ -32,9 +32,12 @@ function* fetchIndTopic(action) {
 function* fetchMyTopics() {
     // Get YOUR topics from the DB
     try {
-        const user = yield select(state => state.user);
-        const userId = user.id;
-      const response = yield axios.get(`/api/topics/${userId}`); // Use backticks for template literals
+        const config = {
+            headers: { 'Content-Type': 'application/json'},
+            withCredentials: true,
+        }
+        
+      const response = yield axios.get(`/api/mytopics/`, config); // Use backticks for template literals
       console.log('get your topics:', response.data);
       yield put({ type: 'SET_MY_TOPICS', payload: response.data });
     } catch (error) {
@@ -55,9 +58,23 @@ function* addTopic(action) {
     }
 }
 
+function* addComment(action) {
+    // adding users topic
+    try {
+        const config = {
+            headers: { 'Content-Type': 'application/json'},
+            withCredentials: true,
+        };
+        yield axios.post('/api/topics', action.payload, config);
+    } catch (error) {
+        console.log('Error with adding topic', error)
+    }
+}
+
 function* TopicsSaga() {
     yield takeEvery('FETCH_TOPICS', fetchAllTopics);
     yield takeEvery('ADD_TOPIC', addTopic);
+    yield takeEvery('ADD_COMMENT', addComment);
     yield takeEvery('FETCH_MY_TOPICS', fetchMyTopics);
     yield takeEvery('FETCH_IND_TOPIC', fetchIndTopic);
 }

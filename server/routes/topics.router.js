@@ -6,7 +6,7 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 // get for all topics
 router.get('/', (req, res) => {
 
-  const query = `SELECT * FROM topics`;
+  const query = `SELECT * FROM topics ORDER BY "topic_name" ASC`;
   pool.query(query)
     .then( result => {
       res.send(result.rows);
@@ -18,29 +18,7 @@ router.get('/', (req, res) => {
 
 });
 
-// get for my topics ???
-router.get('/api/topics/:userId', (req, res) => {
-  if (req.isAuthenticated()) {
-    console.log('/topic GET route');
-    console.log('is authenticated?', req.isAuthenticated());
-    console.log('user', req.user);
-
-    let queryText = `SELECT * FROM "topics" WHERE user_id = $1`;
-    pool.query(queryText, [req.user.id])
-      .then((result) => {
-        console.log('Database Query Result:', result.rows);
-        res.send(result.rows);
-      })
-      .catch((error) => {
-        console.log('Database Query Error:', error);
-        res.sendStatus(500);
-      });
-  } else {
-    console.log('User is not authenticated');
-    res.sendStatus(403);
-  }
-});
-
+// get my topics
 router.get('/:id', (req, res) => {
   const id = req.params.id; // Retrieve the id from the URL parameter
   const query = 'SELECT * FROM topics WHERE id = $1'; // Use a WHERE clause to filter by id
@@ -77,6 +55,21 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 
 
+});
+
+router.put('/:id', (req, res) => {
+  // Update this single student
+  console.log('In PUT router')
+  const idToUpdate = req.params.id;
+  const sqlText = `UPDATE students SET github_name = $1 WHERE id = $2`;
+  pool.query(sqlText, [req.body.github_name, idToUpdate])
+      .then((result) => {
+          res.sendStatus(200);
+      })
+      .catch((error) => {
+          console.log(`Error making database query ${sqlText}`, error);
+          res.sendStatus(500);
+      });
 });
 
 module.exports = router;

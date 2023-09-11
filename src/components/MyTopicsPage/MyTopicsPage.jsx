@@ -24,12 +24,13 @@ function MyTopicsPage() {
       <main>
   <h1>Topics</h1>
   <section className="mytopics">
-    {mytopics.map((topic) => {
+    {mytopics.map((mytopics) => {
       return (
-        <div key={topic.id}>
+        <div key={mytopics.id}>
 
-          <h1>{topic.topic_name}</h1>
-          <p>{topic.topic_description}</p>
+          <h1>{mytopics.topic_name}</h1>
+          <p>{mytopics.topic_description}</p>
+          <button>edit</button>
           {/* <p>User ID: {topic.user_id}</p> */}
         </div>
       );

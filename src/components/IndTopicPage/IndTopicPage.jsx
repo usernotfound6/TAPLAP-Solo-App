@@ -20,6 +20,8 @@ function IndTopicPage() {
             <h1>{indtopic.topic_name}</h1>
             <p>{indtopic.topic_description}</p>
             </section>
+            <textarea placeholder="add comment..."></textarea>
+            <button>share comment!</button>
         </main>
     )
 }
