@@ -4,6 +4,7 @@ import user from './user.reducer';
 import topics from './topics.reducer';
 import mytopics from './mytopics.reducer';
 import indtopic from './indtopic.reducer';
+import comments from './comments.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   topics,
   mytopics,
-  indtopic
+  indtopic,
+  comments,
 });
 
 export default rootReducer;

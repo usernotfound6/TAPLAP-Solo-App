@@ -58,6 +58,19 @@ function* addTopic(action) {
     }
 }
 
+function* fetchAllComments(action) {
+    // get all topics from the DB
+    try {
+        const topics = yield axios.get(`/api/comments/${action.payload}`);
+        console.log('get all comments:', topics.data);
+        yield put({ type: 'SET_COMMENTS', payload: topics.data });
+
+    } catch {
+        console.log('get all topics error');
+    }
+        
+}
+
 function* addComment(action) {
     // adding users topic
     try {
@@ -65,15 +78,16 @@ function* addComment(action) {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true,
         };
-        yield axios.post('/api/topics', action.payload, config);
+        yield axios.post('/api/comments', action.payload, config);
     } catch (error) {
-        console.log('Error with adding topic', error)
+        console.log('Error with adding comment', error)
     }
 }
 
 function* TopicsSaga() {
     yield takeEvery('FETCH_TOPICS', fetchAllTopics);
     yield takeEvery('ADD_TOPIC', addTopic);
+    yield takeEvery('FETCH_COMMENTS', fetchAllComments);
     yield takeEvery('ADD_COMMENT', addComment);
     yield takeEvery('FETCH_MY_TOPICS', fetchMyTopics);
     yield takeEvery('FETCH_IND_TOPIC', fetchIndTopic);

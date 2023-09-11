@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
-// get for my topics ???
+// get for my topics
 router.get('/', (req, res) => {
     if (req.isAuthenticated()) {
       console.log('/topic GET route');
