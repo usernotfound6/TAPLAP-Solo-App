@@ -8,6 +8,7 @@ function IndTopicPage() {
   // const history = useHistory();
   const indtopic = useSelector((store) => store.indtopic);
   const comments = useSelector((store) => store.comments);
+  
   console.log("indtopic:", indtopic);
   console.log("comments:", comments);
 

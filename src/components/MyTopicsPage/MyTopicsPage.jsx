@@ -31,6 +31,7 @@ function MyTopicsPage() {
           <h1>{mytopics.topic_name}</h1>
           <p>{mytopics.topic_description}</p>
           <button>edit</button>
+          <button>delete</button>
           {/* <p>User ID: {topic.user_id}</p> */}
         </div>
       );
