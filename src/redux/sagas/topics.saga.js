@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { select } from 'redux-saga/effects';
 
@@ -84,6 +84,20 @@ function* addComment(action) {
     }
 }
 
+function* deleteTopic(action) {
+    console.log('inside deletetopic', action.payload)
+    try {
+        yield axios.delete(`/api/topics/${action.payload}`)
+        yield put({ 
+            type: 'FETCH_MY_TOPICS', 
+        });
+
+    } catch {
+        console.log('get all error');
+    }
+
+}
+
 function* TopicsSaga() {
     yield takeEvery('FETCH_TOPICS', fetchAllTopics);
     yield takeEvery('ADD_TOPIC', addTopic);
@@ -91,6 +105,7 @@ function* TopicsSaga() {
     yield takeEvery('ADD_COMMENT', addComment);
     yield takeEvery('FETCH_MY_TOPICS', fetchMyTopics);
     yield takeEvery('FETCH_IND_TOPIC', fetchIndTopic);
+    yield takeLatest('DELETE_TOPIC', deleteTopic);
 }
 
 export default TopicsSaga;

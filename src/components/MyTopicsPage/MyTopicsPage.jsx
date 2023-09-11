@@ -21,8 +21,9 @@ function MyTopicsPage() {
   //       <LogOutButton className="btn" />
   //     </div>
   
+  
       <main>
-  <h1>Topics</h1>
+  <h1>My Topics:</h1>
   <section className="mytopics">
     {mytopics.map((mytopics) => {
       return (
@@ -31,7 +32,9 @@ function MyTopicsPage() {
           <h1>{mytopics.topic_name}</h1>
           <p>{mytopics.topic_description}</p>
           <button>edit</button>
-          <button>delete</button>
+          <button onClick={() => dispatch({ type: "DELETE_TOPIC", payload: mytopics.id })}>
+                Delete
+              </button>
           {/* <p>User ID: {topic.user_id}</p> */}
         </div>
       );

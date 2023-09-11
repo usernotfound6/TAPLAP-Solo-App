@@ -26,7 +26,7 @@ function CreateTopicPage() {
       type: "ADD_TOPIC",
       payload: newTopic
     })
-    history.push('/user')
+    history.push('/topics')
     // clearTopicFields();
   };
 
