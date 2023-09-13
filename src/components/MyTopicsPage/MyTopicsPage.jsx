@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function MyTopicsPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const edittopic = useSelector((store) => store.edittopic);
   const dispatch = useDispatch();
   // history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);

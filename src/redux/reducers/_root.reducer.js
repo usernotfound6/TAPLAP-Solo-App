@@ -5,6 +5,7 @@ import topics from './topics.reducer';
 import mytopics from './mytopics.reducer';
 import indtopic from './indtopic.reducer';
 import comments from './comments.reducer';
+import edittopic from './edittopic.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   mytopics,
   indtopic,
   comments,
+  edittopic
 });
 
 export default rootReducer;
