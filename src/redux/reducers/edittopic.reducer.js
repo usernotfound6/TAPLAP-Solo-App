@@ -1,4 +1,4 @@
-const edittopic = (state  = [], action) => {
+const edittopic = (state  = {}, action) => {
     if(action.type === 'SET_EDIT_TOPIC'){
         return action.payload;
     }

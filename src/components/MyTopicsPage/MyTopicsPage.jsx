@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function MyTopicsPage(props) {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
-  const user = useSelector((store) => store.user);
-  const edittopic = useSelector((store) => store.edittopic);
+ 
+  // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  history = useHistory();
+  const edittopic = useSelector((store) => store.edittopic);
+  const history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);
   console.log("heres my topics", mytopics)
 
@@ -16,8 +16,8 @@ function MyTopicsPage(props) {
   }, []);
 
   const handleEditClick = () => {
-    console.log('topic clicked:', props.topic)
-    dispatch({type:'SET_EDIT_TOPIC', payload:props.topic})
+    console.log('topic clicked:', edittopic)
+    // dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
     history.push('/edit')
   }
 

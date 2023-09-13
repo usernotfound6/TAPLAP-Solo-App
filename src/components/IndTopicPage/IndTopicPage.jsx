@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
-import { useState
- } from "react";
+import { useState} from "react";
+
 function IndTopicPage() {
   const params = useParams();
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
   const indtopic = useSelector((store) => store.indtopic);
   const comments = useSelector((store) => store.comments);
 
@@ -20,22 +20,32 @@ function IndTopicPage() {
     dispatch({ type: "FETCH_COMMENTS", payload: params.id });
   }, [dispatch, params.id]);
 
-  const handleComment = () => {
+  const handleComment = async () => {
     let newComment = {
-        text: text,
-        topic_id: params.id
-
-
+      text: text,
+      topic_id: params.id
+    };
+  
+    try {
+      // Dispatch the "ADD_COMMENT" action
+      await dispatch({
+        type: "ADD_COMMENT",
+        payload: newComment
+      });
+  
+      // After the comment is added, fetch the updated comments
+      await dispatch({ type: "FETCH_COMMENTS", payload: params.id });
+  
+      setText(''); // Clear the text area
+  
+    } catch (error) {
+      console.error("Error adding or fetching comments:", error);
     }
-    console.log('ddddddddd', params.id)
-    dispatch({
-      type: "ADD_COMMENT",
-      payload: newComment
-    })
-    dispatch({ type: "FETCH_COMMENTS", payload: params.id });
+  };
+  
 
-   setText('')
-  }
+//    history.push('/indtopic/:id')
+  
   return (
     <main>
       <section className="indtopic">

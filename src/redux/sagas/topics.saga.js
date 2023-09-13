@@ -94,10 +94,26 @@ function* deleteTopic(action) {
         });
 
     } catch {
-        console.log('get all error');
+        console.log('delete topic error');
     }
 
 }
+
+function* editTopic(action) {
+    console.log('inside edit topic', action.payload)
+    try {
+        yield axios.put(`/api/topics/${action.payload}`)
+        yield put({ 
+            type: 'FETCH_MY_TOPICS', 
+        });
+
+    } catch {
+        console.log('edit topic error');
+    }
+
+}
+
+
 
 function* TopicsSaga() {
     yield takeEvery('FETCH_TOPICS', fetchAllTopics);
@@ -107,6 +123,7 @@ function* TopicsSaga() {
     yield takeEvery('FETCH_MY_TOPICS', fetchMyTopics);
     yield takeEvery('FETCH_IND_TOPIC', fetchIndTopic);
     yield takeLatest('DELETE_TOPIC', deleteTopic);
+    yield takeLatest('EDIT_TOPIC', editTopic);
 }
 
 export default TopicsSaga;
