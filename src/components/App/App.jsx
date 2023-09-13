@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import MyTopicsPage from '../MyTopicsPage/MyTopicsPage';
 import IndTopicPage from '../IndTopicPage/IndTopicPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import EditTopicForm from '../EditTopicForm/EditTopicForm';
 
 import './App.css';
 
@@ -70,6 +71,14 @@ function App() {
             path="/mytopics"
           >
             <MyTopicsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows EditTopicForm else shows LoginPage
+            exact
+            path="/edit"
+          >
+            <EditTopicForm />
           </ProtectedRoute>
 
           <ProtectedRoute
