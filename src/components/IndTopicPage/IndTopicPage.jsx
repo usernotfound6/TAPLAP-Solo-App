@@ -23,7 +23,7 @@ function IndTopicPage() {
   const handleComment = () => {
     let newComment = {
         text: text,
-        id: params.id
+        topic_id: params.id
 
 
     }
@@ -32,6 +32,9 @@ function IndTopicPage() {
       type: "ADD_COMMENT",
       payload: newComment
     })
+    dispatch({ type: "FETCH_COMMENTS", payload: params.id });
+
+   setText('')
   }
   return (
     <main>

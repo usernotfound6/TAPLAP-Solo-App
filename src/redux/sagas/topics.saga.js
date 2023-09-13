@@ -74,7 +74,7 @@ function* fetchAllComments(action) {
 function* addComment(action) {
     // adding users topic
     try {
-        console.log('erroryooooo')
+        console.log('erroryooooo', action.payload)
         const config = {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true,

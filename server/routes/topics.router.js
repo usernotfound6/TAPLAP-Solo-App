@@ -41,9 +41,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-/**
- * POST route template
- */
+// add topic
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('/topic POST route');
   console.log(req.body);
@@ -65,6 +63,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 });
 
+// delete user topic
 router.delete('/:id', (req, res) => {
   console.log("login:", req.isAuthenticated())
   if (req.isAuthenticated()) {
@@ -81,20 +80,32 @@ router.delete('/:id', (req, res) => {
   }
 });
 
-// router.put('/:id', (req, res) => {
-//   // Update this single student
-//   console.log('In PUT router')
-//   const idToUpdate = req.params.id;
-//   const sqlText = `UPDATE students SET github_name = $1 WHERE id = $2`;
-//   pool.query(sqlText, [req.body.github_name, idToUpdate])
-//       .then((result) => {
-//           res.sendStatus(200);
-//       })
-//       .catch((error) => {
-//           console.log(`Error making database query ${sqlText}`, error);
-//           res.sendStatus(500);
-//       });
-// });
+// update user topic
+router.put('/:id', (req, res) => {
+  console.log('In PUT router')
+  const topicToUpdate = req.params.id;
+  const sqlText = `
+  UPDATE topics
+  SET
+    topic_name = $1,
+    topic_description = $2
+  WHERE
+    id = $3
+`;
+pool.query(sqlText, [req.body.topic_name, req.body.topic_description, topicToUpdate])
+.then((result) => {
+  res.sendStatus(200);
+})
+.catch((error) => {
+  console.log(`Error making database query ${sqlText}`, error);
+  res.sendStatus(500);
+});
+});
+
+
+
+
+
 
 
 
