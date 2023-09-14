@@ -1,0 +1,13 @@
+.indTopicCard {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered-content {
+    text-align: center; /* Center text horizontally within the div */
+  }
+
+  h1 {
+    font-size: xx-large;
+  }

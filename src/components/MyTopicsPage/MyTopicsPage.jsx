@@ -15,11 +15,12 @@ function MyTopicsPage(props) {
       dispatch({ type: 'FETCH_MY_TOPICS' });
   }, []);
 
-  const handleEditClick = () => {
-    console.log('topic clicked:', edittopic)
-    // dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
-    history.push('/edit')
-  }
+  // const handleEditClick = () => {
+    console.log('topic clicked:', mytopics)
+  //   // console.log(e)
+  //   dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
+  //   history.push('/edit')
+  // }
 
   return (
   //   <div>
@@ -39,7 +40,7 @@ function MyTopicsPage(props) {
 
           <h1>{mytopics.topic_name}</h1>
           <p>{mytopics.topic_description}</p>
-          <button onClick={handleEditClick}>
+          <button onClick={() => dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})}>
           Edit
         </button>
           <button onClick={() => dispatch({ type: "DELETE_TOPIC", payload: mytopics.id })}>

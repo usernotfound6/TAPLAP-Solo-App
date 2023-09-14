@@ -8,7 +8,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
   background-color: rgb(235, 161, 57);
-  
+  background-image: url('https://bibletalk.tv/graphics/file/excellent-paper-texture-overlay-background.jpg');
+  background-size: 1930px;
+  background-attachment: fixed;
+  margin: 30px;
 }
 
 img {

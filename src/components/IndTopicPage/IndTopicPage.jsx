@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom";
 import { useState} from "react";
+import Card from "@mui/material/Card";
+import { CardContent } from "@mui/material";
+import './/IndTopicPage.css';
 
 function IndTopicPage() {
   const params = useParams();
@@ -48,10 +51,18 @@ function IndTopicPage() {
   
   return (
     <main>
-      <section className="indtopic">
-        <h1>{indtopic.topic_name}</h1>
-        <p>{indtopic.topic_description}</p>
-      </section>
+     <section className="indtopic">
+  <div className="indTopicCard">
+    <Card sx={{ maxWidth: 1045 , minWidth: 300, borderRadius: 6}}>
+      <CardContent>
+        <div className="centered-content">
+          <h1>{indtopic.topic_name}</h1>
+          <p>{indtopic.topic_description}</p>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+</section>
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>{comment.text}</li>
