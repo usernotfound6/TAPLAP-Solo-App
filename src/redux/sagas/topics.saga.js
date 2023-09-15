@@ -29,6 +29,21 @@ function* fetchIndTopic(action) {
     }
         
 }
+
+function* editTopic(action) {
+    
+    try {
+        yield axios.put(`/api/edit/${action.payload}`)
+        console.log('topic to edit:', `${action.payload}`);
+        yield put({ 
+            type: 'FETCH_MY_TOPICS', 
+        });
+
+    } catch {
+        console.log('edit topic error');
+    }
+
+}
 function* fetchMyTopics() {
     // Get YOUR topics from the DB
     try {
@@ -95,20 +110,6 @@ function* deleteTopic(action) {
 
     } catch {
         console.log('delete topic error');
-    }
-
-}
-
-function* editTopic(action) {
-    console.log('inside edit topic', action.payload)
-    try {
-        yield axios.put(`/api/topics/${action.payload}`)
-        yield put({ 
-            type: 'FETCH_MY_TOPICS', 
-        });
-
-    } catch {
-        console.log('edit topic error');
     }
 
 }

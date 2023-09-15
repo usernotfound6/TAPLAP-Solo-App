@@ -92,7 +92,7 @@ router.put('/:id', (req, res) => {
   WHERE
     id = $3
 `;
-pool.query(sqlText, [req.body.topic_name, req.body.topic_description, topicToUpdate])
+pool.query(sqlText, req.body.topic_name, req.body.topic_description, [topicToUpdate])
 .then((result) => {
   res.sendStatus(200);
 })

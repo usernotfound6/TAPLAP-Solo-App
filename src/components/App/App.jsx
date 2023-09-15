@@ -75,8 +75,8 @@ function App() {
 
           <ProtectedRoute
             // logged in shows EditTopicForm else shows LoginPage
-            exact
-            path="/edit"
+            
+            path="/edit/:id"
           >
             <EditTopicForm />
           </ProtectedRoute>

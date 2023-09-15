@@ -15,7 +15,7 @@ import {
 function MyTopicsPage(props) {
   // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  // const edittopic = useSelector((store) => store.edittopic);
+  const edittopic = useSelector((store) => store.edittopic);
   const history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);
   console.log("heres my topics", mytopics);
@@ -25,7 +25,7 @@ function MyTopicsPage(props) {
   }, []);
 
   // const handleEditClick = () => {
-  console.log("topic clicked:", mytopics);
+  console.log("topic clicked:", edittopic);
   //   // console.log(e)
   //   dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
   //   history.push('/edit')
@@ -62,22 +62,22 @@ function MyTopicsPage(props) {
       </div>
       <section className="mytopics">
         {mytopics.map((mytopic) => (
-          <Card key={mytopic.id} elevation={24} sx={{  backgroundColor: "beige", marginBottom: 5 , borderRadius: 4}}>
+          <Card key={mytopic.id} elevation={24} sx={{ backgroundColor: "beige", marginBottom: 5, borderRadius: 4 }}>
             <CardContent sx={{ padding: -4, marginLeft: 1.5, marginTop: -4, marginBottom: 1 }}>
               <div>
                 <h1>{mytopic.topic_name}</h1>
                 <p>{mytopic.topic_description}</p>
               </div>
             </CardContent>
-            <CardActions sx={{ marginBottom: 1,  marginLeft: 1.5}}>
+            <CardActions sx={{ marginBottom: 1, marginLeft: 1.5 }}>
               <Button
-                sx={{ marginTop: -3,  borderRadius: 1 }}
+                sx={{ marginTop: -3, borderRadius: 1 }}
                 variant="outlined"
                 color="primary"
-                onClick={() =>
-                //   dispatch({ type: "SET_EDIT_TOPIC", payload: edittopic.id })
-                // }
-                history.push('/edit')}
+                onClick={() => {
+                  dispatch({ type: "SET_EDIT_TOPIC", payload: mytopic.id });
+                  history.push(`/edit/${mytopic.id}`);
+                }}
               >
                 Edit
               </Button>
@@ -98,4 +98,5 @@ function MyTopicsPage(props) {
     </main>
   );
 }
+
 export default MyTopicsPage;

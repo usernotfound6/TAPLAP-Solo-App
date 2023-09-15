@@ -7,6 +7,7 @@ function EditTopicForm(props) {
     const dispatch = useDispatch();
     const history = useHistory();
     const edittopic = useSelector((store) => store.edittopic);
+    console.log('yo', edittopic)
 
     function handleChange(event) {
       console.log(event.target.value)
@@ -27,7 +28,7 @@ function EditTopicForm(props) {
     event.preventDefault();
 
     // PUT REQUEST to /api/topics/:id
-    axios.put(`/api/topics/${edittopic.id}`, edittopic)
+    axios.put(`/api/edit/:id`, edittopic)
       .then(response => {
         // clean up reducer data            
         dispatch({ type: 'EDIT_CLEAR' });
