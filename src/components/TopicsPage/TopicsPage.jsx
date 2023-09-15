@@ -70,12 +70,12 @@ function TopicsPage() {
             >
               <img src={require('./grad2.png')} alt={topic.topic_name} style={imageStyle} />
               <CardContent>
-                <Typography variant="h5" component="div">
+                {/* <Typography variant="h5" component="div">
                 {topic.topic_name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                 {topic.topic_description}
-                </Typography>
+                </Typography> */}
                 <div style={textOverlayStyle}>
         <Typography variant="h6" style={{ fontSize: '26px', fontWeight: 'bold'  }}>{topic.topic_name} </Typography>
         {/* <Typography variant="body2" style={{ fontSize: '12px' }}>{topic.topic_description}</Typography> */}
