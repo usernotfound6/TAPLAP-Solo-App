@@ -45,10 +45,11 @@ function MyTopicsPage(props) {
           elevation={24}
           sx={{
             maxHeight: 70,
-            minWidth: 220,
-            borderRadius: 6,
+            maxWidth: 205,
+            
+            borderRadius: 3,
             marginBottom: 4,
-            marginTop: 2,
+            marginTop: 3,
           }}
         >
           <CardContent sx={{ marginTop: -3}}>
@@ -61,15 +62,15 @@ function MyTopicsPage(props) {
       <section className="mytopics">
         {mytopics.map((mytopic) => (
           <Card key={mytopic.id} elevation={24} sx={{ marginBottom: 5 , borderRadius: 4}}>
-            <CardContent sx={{ padding: -4, marginTop: -4, marginBottom: 1 }}>
+            <CardContent sx={{ padding: -4, marginLeft: 1.5, marginTop: -4, marginBottom: 1 }}>
               <div>
                 <h1>{mytopic.topic_name}</h1>
                 <p>{mytopic.topic_description}</p>
               </div>
             </CardContent>
-            <CardActions>
+            <CardActions sx={{ marginBottom: 1,  marginLeft: 1.5}}>
               <Button
-                sx={{ marginTop: -5,  borderRadius: 1 }}
+                sx={{ marginTop: -3,  borderRadius: 1 }}
                 variant="outlined"
                 color="primary"
                 onClick={() =>
@@ -79,7 +80,7 @@ function MyTopicsPage(props) {
                 Edit
               </Button>
               <Button
-                sx={{ marginTop: -5, borderRadius: 1 }}
+                sx={{ marginTop: -3, borderRadius: 1 }}
                 variant="contained"
                 color="secondary"
                 onClick={() =>

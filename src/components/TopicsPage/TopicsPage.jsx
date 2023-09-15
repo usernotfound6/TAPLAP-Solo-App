@@ -46,7 +46,7 @@ function TopicsPage() {
     position: "relative",
     borderRadius:'10%',
     backgroundColor: 'transparent',
-    maxWidth: '360px'
+    maxWidth: '300px'
   };
   return (
     //   <div>
@@ -66,7 +66,7 @@ function TopicsPage() {
             maxWidth: 140,
             borderRadius: 2,
             marginBottom: 4,
-            marginTop: 3,
+            marginTop: 3,   
           }}
         >
           <CardContent sx={{ marginTop: -3.5}}>
@@ -77,7 +77,7 @@ function TopicsPage() {
         </Card>
       </div>
       <section className="topics">
-        <Grid 
+        <Grid sx={{marginLeft: 8, marginRight: 8}}
         alignItems={"center"} 
         container xs={12} spacing={0} columnGap={4} rowGap={5}>
           {topics.map((topic) => (
@@ -96,7 +96,7 @@ function TopicsPage() {
                 {topic.topic_description}
                 </Typography> */}
                 <div style={textOverlayStyle}>
-        <Typography variant="h6" style={{ fontSize: '26px', fontWeight: 'bold'  }}>{topic.topic_name} </Typography>
+        <Typography variant="h6" style={{ fontSize: '22px', fontWeight: 'bold'  }}>{topic.topic_name} </Typography>
         {/* <Typography variant="body2" style={{ fontSize: '12px' }}>{topic.topic_description}</Typography> */}
       </div>
                 {/* <p>User ID: {topic.user_id}</p> */}
