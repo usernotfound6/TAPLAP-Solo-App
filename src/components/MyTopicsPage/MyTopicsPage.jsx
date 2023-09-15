@@ -44,14 +44,14 @@ function MyTopicsPage(props) {
         <Card
           elevation={24}
           sx={{
-            maxWidth: 1045,
+            maxHeight: 70,
             minWidth: 220,
             borderRadius: 6,
             marginBottom: 4,
             marginTop: 2,
           }}
         >
-          <CardContent>
+          <CardContent sx={{ marginTop: -3}}>
             <div className="centered-content">
               <h1>My Topics:</h1>
             </div>
@@ -60,7 +60,7 @@ function MyTopicsPage(props) {
       </div>
       <section className="mytopics">
         {mytopics.map((mytopic) => (
-          <Card key={mytopic.id} elevation={24} sx={{ marginBottom: 5 }}>
+          <Card key={mytopic.id} elevation={24} sx={{ marginBottom: 5 , borderRadius: 4}}>
             <CardContent sx={{ padding: -4, marginTop: -4, marginBottom: 1 }}>
               <div>
                 <h1>{mytopic.topic_name}</h1>
@@ -69,7 +69,7 @@ function MyTopicsPage(props) {
             </CardContent>
             <CardActions>
               <Button
-                sx={{ marginTop: -5 }}
+                sx={{ marginTop: -5,  borderRadius: 1 }}
                 variant="outlined"
                 color="primary"
                 onClick={() =>
@@ -79,7 +79,7 @@ function MyTopicsPage(props) {
                 Edit
               </Button>
               <Button
-                sx={{ marginTop: -5 }}
+                sx={{ marginTop: -5, borderRadius: 1 }}
                 variant="contained"
                 color="secondary"
                 onClick={() =>

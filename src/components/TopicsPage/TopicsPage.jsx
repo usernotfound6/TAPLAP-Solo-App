@@ -57,13 +57,32 @@ function TopicsPage() {
     //     </div>
 
     <main>
-      <h1>Topics</h1>
+       <div>
+        <Card
+          elevation={24}
+          sx={{
+            maxHeight: 60,
+            minWidth: 140,
+            maxWidth: 140,
+            borderRadius: 2,
+            marginBottom: 4,
+            marginTop: 3,
+          }}
+        >
+          <CardContent sx={{ marginTop: -3.5}}>
+            <div>
+              <h1>Topics:</h1>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
       <section className="topics">
         <Grid 
         alignItems={"center"} 
         container xs={12} spacing={0} columnGap={4} rowGap={5}>
           {topics.map((topic) => (
-            <Card className="noOutlineCard"
+            <Card
+             className="noOutlineCard"
               key={topic.id}
               onClick={() => history.push(`/indtopic/${topic.id}`)}
               style={cardStyle}
