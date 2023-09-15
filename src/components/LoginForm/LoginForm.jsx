@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import {
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  Button,
+  ThemeProvider, createTheme
+} from '@mui/material';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -24,43 +32,83 @@ function LoginForm() {
     }
   }; // end login
 
-  return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
-    </form>
-  );
-}
+  const cardStyle = {
+    maxWidth: 300,
+    margin: '0 auto',
+    marginTop: 150,
+    padding:20,
+    textAlign: 'center',
+    borderRadius: 30,
+    backgroundColor: "beige",
+  };
+  
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+  
+  const inputStyle = {
+    margin: 'auto',
+    padding: 12,
+    minWidth: 250,
+    
+    
+  };
+  
+  const buttonStyle = {
+    margin: 'auto',
+  
+    
+    maxWidth:100
+  };
+  
+  
+    return (
+      <ThemeProvider theme={createTheme()}>
+      <Card elevation={24} style={cardStyle}>
+        <CardContent>
+          <Typography variant="h4" component="h2">
+            Login
+          </Typography>
+          {errors.loginMessage && (
+            <Typography color="error">
+              {errors.loginMessage}
+            </Typography>
+          )}
+          <form style={formStyle} onSubmit={login}>
+            <TextField
+              style={inputStyle}
+              placeholder="Username"
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <TextField
+              style={inputStyle}
+              placeholder="Password"
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <Button
+              style={buttonStyle}
+              variant="contained"
+              color="secondary"
+              type="submit"
+              name="submit"
+            >
+              Log In
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+      </ThemeProvider>
+    );
+  }
 
-export default LoginForm;
+  export default LoginForm;
+

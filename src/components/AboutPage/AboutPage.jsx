@@ -8,9 +8,9 @@ import { Card, CardContent, Typography } from "@mui/material";
 
 function AboutPage() {
   return (
-    <Card elevation={24} sx={{ maxWidth: 600, margin: "auto", marginTop: 6, padding: 2, borderRadius: 14}}>
+    <Card elevation={24} sx={{  backgroundColor: "beige", maxWidth: 600, margin: "auto", marginTop: 6, padding: 2, borderRadius: 10}}>
       <CardContent>
-        <Typography sx={{marginTop: -1}}variant="h5" gutterBottom>
+        <Typography sx={{ backgroundColor: "beige", marginTop: -1}}variant="h5" gutterBottom>
           My Story:
         </Typography>
         <Typography variant="body2">

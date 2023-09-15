@@ -37,7 +37,7 @@ function Nav() {
               My Topics
             </Link>
 
-            <LogOutButton className="navLink" />
+            <LogOutButton className="navLink" to="/login"/>
           </>
         )}
 

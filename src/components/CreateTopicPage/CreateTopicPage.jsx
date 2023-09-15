@@ -10,6 +10,7 @@ import {
   Button,
   Grid,
 } from "@mui/material";
+import { blue } from "@mui/material/colors";
 
 function CreateTopicPage() {
   const dispatch = useDispatch();
@@ -33,8 +34,8 @@ function CreateTopicPage() {
 
   return (
     <><Container maxWidth="xs" sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
-      <Card elevation={24} sx={{ borderRadius: 5, p: 4, textAlign: "center", marginBottom: 4, marginTop: -18  }}>
-      <CardContent sx={{ padding: -20, marginTop: -6.5, marginBottom: -7.5, maxWidth: 330}}>
+      <Card elevation={24} sx={{  backgroundColor: "beige",borderRadius: 5, p: 4, textAlign: "center", marginBottom: 4, marginTop: -18  }}>
+      <CardContent sx={{  backgroundColor: "beige", padding: -20, marginTop: -6.5, marginBottom: -7.5, maxWidth: 330}}>
         <h1>
           What's On Your Mind?
         </h1>
@@ -42,16 +43,17 @@ function CreateTopicPage() {
       </Card>
 
       <Card elevation={20} sx={{ 
-         marginRight: 10, // Auto margin on the right side
-         marginLeft: 10,  // Auto margin on the left side
+        backgroundColor: "beige",
+         marginRight: 10, 
+         marginLeft: 10,  
          marginBottom: 4,
          minHeight: 500,
          minWidth: 400,
          marginTop: 1,
          borderRadius: 4,
          p: 3,
-         textAlign: "center"}}>
-        <form onSubmit={handleSubmit}>
+         textAlign: "center"}}> 
+        <div>
           <TextField
             label="Topic Title"
             variant="outlined"
@@ -68,13 +70,14 @@ function CreateTopicPage() {
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             sx={{ marginBottom: 2 }} />
-        </form>
+        </div>
       </Card>
-    
-        <Button elevation={24} sx={{ borderRadius: 3, marginTop: 1,  fontSize: "20px", // Increase the font size as needed
+      <form onSubmit={handleSubmit}>
+        <Button onClick={handleSubmit} elevation={24} sx={{ borderRadius: 3, marginTop: 1,  fontSize: "20px", // Increase the font size as needed
           padding: "12px 24px"}}type="submit" variant="contained" color="secondary">
           Share!
         </Button>
+      </form>  
         </Container><>
       </></>
   );

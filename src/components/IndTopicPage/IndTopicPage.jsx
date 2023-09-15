@@ -87,6 +87,7 @@ function IndTopicPage() {
           <Card
             elevation={24}
             sx={{
+              backgroundColor: "beige",
               maxWidth: 1045,
               minWidth: 300,
               borderRadius: 6,
@@ -107,6 +108,7 @@ function IndTopicPage() {
       <CommentPaper
         elevation={20}
         sx={{
+          backgroundColor: "beige",
           minWidth: 130,
           marginRight: 90,
           marginLeft: 1,
@@ -123,7 +125,7 @@ function IndTopicPage() {
       </CommentPaper > 
       {comments.map((comment, index) => (
         <div key={comment.id}>
-          <CommentPaper elevation={9}>{comment.text}</CommentPaper>
+          <CommentPaper sx={{ backgroundColor: "beige"}} elevation={9}>{comment.text}</CommentPaper>
         </div>
       ))}
 

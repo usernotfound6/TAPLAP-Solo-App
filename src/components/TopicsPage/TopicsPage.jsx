@@ -23,15 +23,15 @@ function TopicsPage() {
   }, []);
 
   const imageStyle = {
-    width: "100%", // Adjust as needed
-    height: "auto", // Adjust as needed
+    width: "80%", 
+    height: 'auto',
     position: "relative",
   };
 
   const textOverlayStyle = {
     position: "absolute",
-    top: "50%", // Adjust to position text vertically
-    left: "50%", // Adjust to position text horizontally
+    top: "60%",
+    left: "40%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "rgba(0, 0, 0, 0)", // Adjust the background color and opacity
     color: "black", // Text color
@@ -44,7 +44,7 @@ function TopicsPage() {
 
   const cardStyle = {
     position: "relative",
-    borderRadius:'10%',
+    borderRadius:'0%',
     backgroundColor: 'transparent',
     maxWidth: '300px'
   };
@@ -66,7 +66,8 @@ function TopicsPage() {
             maxWidth: 140,
             borderRadius: 2,
             marginBottom: 4,
-            marginTop: 3,   
+            marginTop: 3, 
+            backgroundColor: "beige",  
           }}
         >
           <CardContent sx={{ marginTop: -3.5}}>
@@ -77,17 +78,18 @@ function TopicsPage() {
         </Card>
       </div>
       <section className="topics">
-        <Grid sx={{marginLeft: 8, marginRight: 8}}
+        <Grid sx={{marginLeft: 8, marginRight: 8 }}
         alignItems={"center"} 
-        container xs={12} spacing={0} columnGap={4} rowGap={5}>
+        container xs={12} spacing={0} columnGap={0} rowGap={2}>
           {topics.map((topic) => (
             <Card
+            sx={{maxHeight: 250}}
              className="noOutlineCard"
               key={topic.id}
               onClick={() => history.push(`/indtopic/${topic.id}`)}
               style={cardStyle}
             >
-              <img src={require('./grad2.png')} alt={topic.topic_name} style={imageStyle} />
+              <img src={require('./notes.png')} alt={topic.topic_name} style={imageStyle} />
               <CardContent>
                 {/* <Typography variant="h5" component="div">
                 {topic.topic_name}
@@ -96,7 +98,7 @@ function TopicsPage() {
                 {topic.topic_description}
                 </Typography> */}
                 <div style={textOverlayStyle}>
-        <Typography variant="h6" style={{ fontSize: '22px', fontWeight: 'bold'  }}>{topic.topic_name} </Typography>
+        <Typography variant="h6" style={{ fontSize: '22px', fontWeight: 'bold' , fontFamily: '-moz-initial'  }}>{topic.topic_name} </Typography>
         {/* <Typography variant="body2" style={{ fontSize: '12px' }}>{topic.topic_description}</Typography> */}
       </div>
                 {/* <p>User ID: {topic.user_id}</p> */}

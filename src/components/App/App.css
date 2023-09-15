@@ -67,6 +67,7 @@ Button
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
+  margin-top: 30px;
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #761c99;
@@ -101,7 +102,7 @@ Alert
 /* --------------------------------------------------------------------------------
 Form Treatment
 -------------------------------------------------------------------------------- */
-
+/* 
 .formPanel {
   
   box-sizing: border-box;
@@ -112,7 +113,7 @@ Form Treatment
   background-color: #ffba79;
   border-radius: 32px;
   box-shadow: 0 25px 30px rgb(0, 0, 0, 0.4);
-}
+} */
 
 input {
   margin: 5px;

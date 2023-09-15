@@ -15,7 +15,7 @@ import {
 function MyTopicsPage(props) {
   // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const edittopic = useSelector((store) => store.edittopic);
+  // const edittopic = useSelector((store) => store.edittopic);
   const history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);
   console.log("heres my topics", mytopics);
@@ -41,9 +41,10 @@ function MyTopicsPage(props) {
 
     <main>
       <div className="indTopicCard">
-        <Card
+        <Card 
           elevation={24}
           sx={{
+            backgroundColor: "beige",
             maxHeight: 70,
             maxWidth: 205,
             
@@ -61,7 +62,7 @@ function MyTopicsPage(props) {
       </div>
       <section className="mytopics">
         {mytopics.map((mytopic) => (
-          <Card key={mytopic.id} elevation={24} sx={{ marginBottom: 5 , borderRadius: 4}}>
+          <Card key={mytopic.id} elevation={24} sx={{  backgroundColor: "beige", marginBottom: 5 , borderRadius: 4}}>
             <CardContent sx={{ padding: -4, marginLeft: 1.5, marginTop: -4, marginBottom: 1 }}>
               <div>
                 <h1>{mytopic.topic_name}</h1>
@@ -74,8 +75,9 @@ function MyTopicsPage(props) {
                 variant="outlined"
                 color="primary"
                 onClick={() =>
-                  dispatch({ type: "SET_EDIT_TOPIC", payload: mytopic.id })
-                }
+                //   dispatch({ type: "SET_EDIT_TOPIC", payload: edittopic.id })
+                // }
+                history.push('/edit')}
               >
                 Edit
               </Button>
