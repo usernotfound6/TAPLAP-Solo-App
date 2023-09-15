@@ -9,21 +9,34 @@ import {
   Typography,
   TextareaAutosize,
   Button,
-  styled
+  styled,
 } from "@mui/material";
 import ".//IndTopicPage.css";
 
 const CommentPaper = styled(Paper)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
+  marginBottom: 18,
+  marginLeft: 30,
+  marginRight: 30,
   padding: theme.spacing(2),
   maxWidth: 1045,
   minHeight: 30,
+
 }));
+//sx={{
+//   maxWidth: 1045,
+//   minWidth: 300,
+//   borderRadius: 6,
+//   marginBottom: 5,
+//   marginTop: 2,
+// }}
 
 const ShareCommentButton = styled(Button)({
-  position: "relative",
-  bottom: "20px", // Adjust the distance from the bottom as needed
-  right: "-280px",  // Adjust the distance from the right as needed
+  position: "absolute",
+
+  marginTop: 35,
+  
+  marginLeft: 30,
+  marginRight: 60,
 });
 
 function IndTopicPage() {
@@ -71,7 +84,16 @@ function IndTopicPage() {
     <main>
       <section className="indtopic">
         <div className="indTopicCard">
-          <Card sx={{ maxWidth: 1045, minWidth: 300, borderRadius: 6 }}>
+          <Card
+            elevation={24}
+            sx={{
+              maxWidth: 1045,
+              minWidth: 300,
+              borderRadius: 6,
+              marginBottom: 4,
+              marginTop: 2,
+            }}
+          >
             <CardContent>
               <div className="centered-content">
                 <h1>{indtopic.topic_name}</h1>
@@ -82,11 +104,23 @@ function IndTopicPage() {
         </div>
       </section>
 
-      <CommentPaper sx={{ maxWidth: 170, minHeight: 10, maxHeight: 100, borderRadius: 2 }}>
-      <CardContent>
-        <h2>Comments</h2>
-      </CardContent>
-      </CommentPaper>
+      <CommentPaper
+        elevation={20}
+        sx={{
+          minWidth: 130,
+          marginRight: 90,
+          marginLeft: 1,
+          maxWidth: 130,
+          maxHeight: 60,
+          marginBottom: 4,
+          borderRadius: 2,
+        }}
+      > <div className="indTopicCard">
+        <Typography variant="h5" align="center" fontWeight="bold">
+          Comments
+        </Typography>
+        </div>
+      </CommentPaper > 
       {comments.map((comment, index) => (
         <div key={comment.id}>
           <CommentPaper elevation={9}>{comment.text}</CommentPaper>
@@ -99,13 +133,18 @@ function IndTopicPage() {
         color="dark"
         value={text}
         minRows={7}
-        style={{ width: "50%" }}
+        style={{ width: "50%", marginTop: 20, marginLeft: 45}}
       />
-     <ShareCommentButton variant="contained" color="secondary" sx={{
-    fontSize: "25px", // Increase the font size as needed
-    padding: "12px 24px", // Adjust the padding to make the button larger
-  }} onClick={handleComment}>
-        Share Comment
+      <ShareCommentButton
+        variant="contained"
+        color="secondary"
+        sx={{
+          fontSize: "20px", // Increase the font size as needed
+          padding: "26px 24px", // Adjust the padding to make the button larger
+        }}
+        onClick={handleComment}
+      >
+        Share!
       </ShareCommentButton>
     </main>
   );
