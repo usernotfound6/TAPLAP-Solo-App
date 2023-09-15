@@ -75,7 +75,7 @@ function CreateTopicPage() {
       <form onSubmit={handleSubmit}>
         <Button onClick={handleSubmit} elevation={24} sx={{ borderRadius: 3, marginTop: 1,  fontSize: "20px", // Increase the font size as needed
           padding: "12px 24px"}}type="submit" variant="contained" color="secondary">
-          Share!
+          Share!!
         </Button>
       </form>  
         </Container><>
