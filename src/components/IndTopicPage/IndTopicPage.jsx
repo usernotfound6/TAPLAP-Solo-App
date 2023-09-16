@@ -126,6 +126,7 @@ function IndTopicPage() {
       {comments.map((comment, index) => (
         <div key={comment.id}>
           <CommentPaper sx={{ backgroundColor: "beige"}} elevation={9}>{comment.text}</CommentPaper>
+          <CommentPaper sx={{ backgroundColor: "beige"}} elevation={9}>{comment.username}</CommentPaper>
         </div>
       ))}
 

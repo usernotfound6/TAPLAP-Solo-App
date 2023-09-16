@@ -31,18 +31,15 @@ function* fetchIndTopic(action) {
 }
 
 function* editTopic(action) {
-    
     try {
-        yield axios.put(`/api/edit/${action.payload}`)
+        yield axios.put(`/api/edit/${action.payload.id}`, action.payload)
         console.log('topic to edit:', `${action.payload}`);
         yield put({ 
             type: 'FETCH_MY_TOPICS', 
         });
-
     } catch {
         console.log('edit topic error');
     }
-
 }
 function* fetchMyTopics() {
     // Get YOUR topics from the DB

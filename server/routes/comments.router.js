@@ -7,9 +7,15 @@ const {rejectUnauthenticated} = require('../modules/authentication-middleware');
 
 // get comments for indiviual topic
 router.get('/:id', (req, res) => {
-    if (req.isAuthenticated()) {
-    const id = req.params.id; // Retrieve the id from the URL parameter
-    const query = 'SELECT * FROM contributions WHERE topic_id = $1'; // Use a WHERE clause to filter by id
+  if (req.isAuthenticated()) {
+    const id = req.params.id;
+    const query = `
+      SELECT contributions.*, "user".username
+      FROM contributions
+      INNER JOIN "user" ON contributions.user_id = "user".id
+      WHERE contributions.topic_id = $1
+    `;
+
     pool.query(query, [id])
       .then(result => {
         res.send(result.rows);
@@ -18,11 +24,11 @@ router.get('/:id', (req, res) => {
         console.error('ERROR: ', err);
         res.sendStatus(500);
       });
-    } else {
-      console.log('User is not authenticated');
-      res.sendStatus(403);
-    }
-  });
+  } else {
+    console.log('User is not authenticated');
+    res.sendStatus(403);
+  }
+});
 
   // add comment to ind topic
   router.post('/', rejectUnauthenticated, (req, res) => {

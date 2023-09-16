@@ -9,57 +9,63 @@ function EditTopicForm(props) {
     const edittopic = useSelector((store) => store.edittopic);
     console.log('yo', edittopic)
 
-    function handleChange(event) {
-      console.log(event.target.value)
+    function handleTopicNameChange(event) {
         dispatch({
             type: 'EDIT_ONCHANGE',
             payload: {
-              property1: 'topic_name',
-              value1: event.target.value,
-              property2: 'topic_description',
-              value2: event.target.value
-            }
-          });
-    
-      }
+                property: 'topic_name',
+                value: event.target.value,
+            },
+        });
+    }
 
-       // Called when the submit button is pressed
-  function handleSubmit(event) {
-    event.preventDefault();
+    function handleTopicDescriptionChange(event) {
+        dispatch({
+            type: 'EDIT_ONCHANGE',
+            payload: {
+                property: 'topic_description',
+                value: event.target.value,
+            },
+        });
+    }
 
-    // PUT REQUEST to /api/topics/:id
-    axios.put(`/api/edit/:id`, edittopic)
-      .then(response => {
-        // clean up reducer data            
-        dispatch({ type: 'EDIT_CLEAR' });
+    // Called when the submit button is pressed
+    function handleSubmit(event) {
+        event.preventDefault();
 
-        // refresh will happen with useEffect on Home
-        history.push('/mytopics'); // back to list
-      })
-      .catch(error => {
-        console.log('error on topic PUT: ', error);
-      })
+        // PUT REQUEST to /api/topics/:id
+        axios.put(`/api/topics/${edittopic.id}`, edittopic)
+            .then(response => {
+                // clean up reducer data            
+                dispatch({ type: 'EDIT_CLEAR' });
 
-  };
-  return (
-    <>
-      <h2>Edit Topic</h2>
-      <p>We are edditing this topic: {edittopic.topic_name} with id: {edittopic.id}</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(event) => handleChange(event)}
-          placeholder='Topic Name'
-          value={edittopic.topic_name}
-        />
-         <input
-          onChange={(event) => handleChange(event)}
-          placeholder='Topic Description'
-          value={edittopic.topic_description}
-        />
-        <input type='submit' value='Update Student' />
-      </form>
-    </>
-  );
+                // refresh will happen with useEffect on Home
+                history.push('/mytopics'); // back to list
+            })
+            .catch(error => {
+                console.log('error on topic PUT: ', error);
+            });
+    };
+
+    return (
+        <>
+            <h2>Edit Topic</h2>
+            <p>We are editing this topic: {edittopic.topic_name} with id: {edittopic.id}</p>
+            <form onSubmit={handleSubmit}>
+                <input
+                    onChange={handleTopicNameChange}
+                    placeholder='Topic Name'
+                    value={edittopic.topic_name}
+                />
+                <input
+                    onChange={handleTopicDescriptionChange}
+                    placeholder='Topic Description'
+                    value={edittopic.topic_description}
+                />
+                <input type='submit' value='Update Topic' />
+            </form>
+        </>
+    );
 }
 
 export default EditTopicForm;

@@ -12,20 +12,20 @@ import {
   styled,
 } from "@mui/material";
 
-function MyTopicsPage(props) {
+function MyTopicsPage() {
   // const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-  const edittopic = useSelector((store) => store.edittopic);
+  // const edittopic = useSelector((store) => store.edittopic);
   const history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);
   console.log("heres my topics", mytopics);
-
+//  console.log("topic clicked:", edittopic);
   useEffect(() => {
     dispatch({ type: "FETCH_MY_TOPICS" });
   }, []);
 
   // const handleEditClick = () => {
-  console.log("topic clicked:", edittopic);
+ 
   //   // console.log(e)
   //   dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
   //   history.push('/edit')
@@ -75,7 +75,7 @@ function MyTopicsPage(props) {
                 variant="outlined"
                 color="primary"
                 onClick={() => {
-                  dispatch({ type: "SET_EDIT_TOPIC", payload: mytopic.id });
+                  dispatch({ type: "SET_EDIT_TOPIC", payload: mytopic });
                   history.push(`/edit/${mytopic.id}`);
                 }}
               >
