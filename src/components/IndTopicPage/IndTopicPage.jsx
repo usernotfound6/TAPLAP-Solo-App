@@ -20,24 +20,38 @@ const CommentPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   maxWidth: 1045,
   minHeight: 30,
-
 }));
-//sx={{
-//   maxWidth: 1045,
-//   minWidth: 300,
-//   borderRadius: 6,
-//   marginBottom: 5,
-//   marginTop: 2,
-// }}
+
+const CommentContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+}));
+
+const CommentUsername = styled("div")({
+  flex: 1,
+  paddingRight: "10px",
+});
+
+const CommentText = styled("div")({
+  flex: 3,
+});
 
 const ShareCommentButton = styled(Button)({
   position: "absolute",
-
   marginTop: 35,
-  
   marginLeft: 30,
   marginRight: 60,
 });
+
+// Utility function to generate random colors
+const getRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 function IndTopicPage() {
   const params = useParams();
@@ -48,8 +62,8 @@ function IndTopicPage() {
 
   const [text, setText] = useState("");
 
-  console.log("indtopic:", indtopic);
-  console.log("comments:", comments);
+  // Mapping of usernames to colors
+  const usernameColors = {};
 
   useEffect(() => {
     dispatch({ type: "FETCH_IND_TOPIC", payload: params.id });
@@ -77,8 +91,6 @@ function IndTopicPage() {
       console.error("Error adding or fetching comments:", error);
     }
   };
-
-  //    history.push('/indtopic/:id')
 
   return (
     <main>
@@ -117,18 +129,41 @@ function IndTopicPage() {
           marginBottom: 4,
           borderRadius: 2,
         }}
-      > <div className="indTopicCard">
-        <Typography variant="h5" align="center" fontWeight="bold">
-          Comments
-        </Typography>
+      >
+        <div className="indTopicCard">
+          <Typography variant="h5" align="center" fontWeight="bold">
+            Comments
+          </Typography>
         </div>
-      </CommentPaper > 
-      {comments.map((comment, index) => (
-        <div key={comment.id}>
-          <CommentPaper sx={{ backgroundColor: "beige"}} elevation={9}>{comment.text}</CommentPaper>
-          <CommentPaper sx={{ backgroundColor: "beige"}} elevation={9}>{comment.username}</CommentPaper>
-        </div>
-      ))}
+      </CommentPaper>
+
+      {comments.map((comment, index) => {
+        // Generate a consistent color for each username
+        if (!usernameColors[comment.username]) {
+          usernameColors[comment.username] = getRandomColor();
+        }
+
+        return (
+          <div key={comment.id}>
+            <CommentPaper sx={{ backgroundColor: "beige" }} elevation={9}>
+              <div style={{ display: "flex" }}>
+                <div
+                  className="comment-username-box"
+                  style={{
+                    backgroundColor: usernameColors[comment.username],
+                    padding: "8px",
+                    marginRight: "10px",
+                    borderRadius: 4,
+                  }}
+                >
+                  <div className="comment-username">{comment.username}</div>
+                </div>
+                <div className="comment-text">{comment.text}</div>
+              </div>
+            </CommentPaper>
+          </div>
+        );
+      })}
 
       <TextareaAutosize
         onChange={(event) => setText(event.target.value)}
@@ -136,14 +171,14 @@ function IndTopicPage() {
         color="dark"
         value={text}
         minRows={7}
-        style={{ width: "50%", marginTop: 20, marginLeft: 45}}
+        style={{ width: "50%", marginTop: 20, marginLeft: 45 }}
       />
       <ShareCommentButton
         variant="contained"
         color="secondary"
         sx={{
-          fontSize: "20px", // Increase the font size as needed
-          padding: "26px 24px", // Adjust the padding to make the button larger
+          fontSize: "20px",
+          padding: "26px 24px",
         }}
         onClick={handleComment}
       >
