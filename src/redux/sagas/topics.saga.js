@@ -1,6 +1,6 @@
 import { takeEvery, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { select } from 'redux-saga/effects';
+
 
 
 function* fetchAllTopics() {
@@ -18,7 +18,7 @@ function* fetchAllTopics() {
 
 
 function* fetchIndTopic(action) {
-    // get all topics from the DB
+    // get individual topics from the DB
     try {
         const indtopic = yield axios.get(`/api/topics/${action.payload}`);
         console.log('get individual topic:', indtopic.data);

@@ -4,12 +4,18 @@ const router = express.Router();
 const {rejectUnauthenticated} = require('../modules/authentication-middleware');
  
  // get pennies for indiviual comment
-router.get('/:id', (req, res) => {
+ router.get('/:id', (req, res) => {
+    console.log('GET /api/pennies/:id route hit');
     if (req.isAuthenticated()) {
       const id = req.params.id;
-      const query = `SELECT * FROM pennies WHERE id = $1`;
+      const query = `SELECT c.id AS comment_id, COUNT(p.id) AS penny_count
+      FROM contributions c
+      LEFT JOIN pennies p ON c.id = p.comment_id
+      WHERE c.id = $1
+      GROUP BY c.id;`;
       pool.query(query, [id])
         .then(result => {
+            console.log('heeeeeeee', result.rows);
           res.send(result.rows);
         })
         .catch(err => {
@@ -57,5 +63,5 @@ router.get('/:id', (req, res) => {
       res.sendStatus(403)
     }
   });
-  
+
   module.exports = router;

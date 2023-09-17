@@ -30,7 +30,6 @@ app.use('/api/topics', topicsRouter);
 app.use('/api/mytopics', myTopicsRouter);
 app.use('/api/comments', commentsRouter);
 app.use('/api/pennies', penniesRouter);
-
 // Serve static files
 app.use(express.static('build'));
 

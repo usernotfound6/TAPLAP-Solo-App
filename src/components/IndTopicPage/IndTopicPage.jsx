@@ -10,6 +10,8 @@ import {
   TextareaAutosize,
   Button,
   styled,
+  IconButton,
+  ThumbUpIcon
 } from "@mui/material";
 import ".//IndTopicPage.css";
 
@@ -59,6 +61,8 @@ function IndTopicPage() {
   const history = useHistory();
   const indtopic = useSelector((store) => store.indtopic);
   const comments = useSelector((store) => store.comments);
+  const pennies = useSelector((store) => store.pennies);
+  console.log('pennies', pennies)
 
   const [text, setText] = useState("");
 
@@ -68,6 +72,7 @@ function IndTopicPage() {
   useEffect(() => {
     dispatch({ type: "FETCH_IND_TOPIC", payload: params.id });
     dispatch({ type: "FETCH_COMMENTS", payload: params.id });
+    dispatch({ type: "FETCH_PENNIES", payload: params.id });
   }, [dispatch, params.id]);
 
   const handleComment = async () => {
@@ -89,6 +94,17 @@ function IndTopicPage() {
       setText(""); // Clear the text area
     } catch (error) {
       console.error("Error adding or fetching comments:", error);
+    }
+  };
+  
+
+  const handlePenny = async (commentId) => {
+    try {
+      // Dispatch the "ADD_PENNY" action to like a comment
+      await dispatch({ type: "ADD_PENNY"});
+      await dispatch({ type: "FETCH_PENNIES", payload: params.id });
+    } catch (error) {
+      console.error("Error adding penny:", error);
     }
   };
 
@@ -160,6 +176,13 @@ function IndTopicPage() {
                   <div className="comment-username">{comment.username}</div>
                 </div>
                 <div className="comment-text">{comment.text}</div>
+                <IconButton
+                  onClick={() => handlePenny(comment.id)}
+                  color={(comment.id) ? "primary" : "default"}
+                >
+                
+                </IconButton>
+                <div>{pennies.id} likes</div>
               </div>
             </CommentPaper>
           </div>
@@ -172,7 +195,12 @@ function IndTopicPage() {
         color="dark"
         value={text}
         minRows={7}
-        style={{ width: "50%", marginTop: 20, marginLeft: 45 , borderRadius: 12}}
+        style={{
+          width: "50%",
+          marginTop: 20,
+          marginLeft: 45,
+          borderRadius: 12,
+        }}
       />
       <ShareCommentButton
         variant="contained"
