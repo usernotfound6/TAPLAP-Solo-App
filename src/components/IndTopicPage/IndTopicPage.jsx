@@ -111,6 +111,7 @@ function IndTopicPage() {
               <div className="centered-content">
                 <h1>{indtopic.topic_name}</h1>
                 <p>{indtopic.topic_description}</p>
+                <></>
               </div>
             </CardContent>
           </Card>
@@ -171,7 +172,7 @@ function IndTopicPage() {
         color="dark"
         value={text}
         minRows={7}
-        style={{ width: "50%", marginTop: 20, marginLeft: 45 }}
+        style={{ width: "50%", marginTop: 20, marginLeft: 45 , borderRadius: 12}}
       />
       <ShareCommentButton
         variant="contained"

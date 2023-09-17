@@ -36,6 +36,7 @@ function AboutPage() {
         src="https://scontent-msp1-1.xx.fbcdn.net/v/t1.6435-9/76751451_10162589068800182_8654721343276711936_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Nh95DpfIrLUAX-7gehL&_nc_ht=scontent-msp1-1.xx&oh=00_AfBp5MtSg0wu0kKanXykHJYU98tuMkxs1WD4a468mzpdBw&oe=65207442"
         alt="My Photo"
       />
+      <img src={require('./YARD.jpg')}/>
     </Card>
   );
 }
