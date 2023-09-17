@@ -119,6 +119,7 @@ function EditTopicForm(props) {
         <Card
           elevation={20}
           sx={{
+            display: 'flex',
             backgroundColor: 'beige',
             marginRight: 10,
             marginLeft: 10,

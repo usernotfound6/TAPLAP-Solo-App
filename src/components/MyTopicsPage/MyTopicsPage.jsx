@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Card from "@mui/material/Card";
 import {
   CardContent,
-  Paper,
-  Typography,
-  TextareaAutosize,
   CardActions,
   Button,
-  styled,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from "@mui/material";
 
 function MyTopicsPage() {
@@ -18,6 +19,8 @@ function MyTopicsPage() {
   // const edittopic = useSelector((store) => store.edittopic);
   const history = useHistory();
   const mytopics = useSelector((store) => store.mytopics);
+  const [deleteTopicId, setDeleteTopicId] = useState(null);
+  const [openConfirmation, setOpenConfirmation] = useState(false);
   console.log("heres my topics", mytopics);
 //  console.log("topic clicked:", edittopic);
   useEffect(() => {
@@ -30,6 +33,25 @@ function MyTopicsPage() {
   //   dispatch({type:'SET_EDIT_TOPIC', payload: mytopics.id})
   //   history.push('/edit')
   // }
+
+  const handleDeleteClick = (topicId) => {
+    setDeleteTopicId(topicId);
+    setOpenConfirmation(true);
+  };
+
+  const handleConfirmDelete = () => {
+    if (deleteTopicId) {
+      // Perform the delete action here
+      console.log("Deleting topic with ID:", deleteTopicId);
+      dispatch({ type: "DELETE_TOPIC", payload: deleteTopicId });
+    }
+    setOpenConfirmation(false);
+  };
+
+  const handleCloseConfirmation = () => {
+    setDeleteTopicId(null);
+    setOpenConfirmation(false);
+  };
 
   return (
     //   <div>
@@ -85,18 +107,44 @@ function MyTopicsPage() {
                 sx={{ marginTop: -3, borderRadius: 1 }}
                 variant="contained"
                 color="secondary"
-                onClick={() =>
-                  dispatch({ type: "DELETE_TOPIC", payload: mytopic.id })
-                }
+                onClick={() => handleDeleteClick(mytopic.id)}
               >
-                Delete
+                 Delete
               </Button>
             </CardActions>
           </Card>
         ))}
       </section>
+
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={openConfirmation}
+        onClose={handleCloseConfirmation}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">Confirm Delete</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this topic?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseConfirmation} color="secondary" variant="outlined">
+            Cancel
+          </Button>
+          <Button onClick={handleConfirmDelete} color="error" variant='contained' autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </main>
   );
 }
 
 export default MyTopicsPage;
+
+
+
+
+
