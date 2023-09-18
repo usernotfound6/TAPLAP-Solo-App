@@ -24,10 +24,10 @@ Below you can find photos of the applications layout and functionality.
 ### About Page:
 <img width="800" alt="Screenshot 2023-09-18 at 1 28 32 PM" src="https://github.com/usernotfound6/prime-solo-project-1/assets/129703710/ff831ec8-5e2b-496a-a199-7004b7f105a1">
 
-### Author
+### Author:
 Fraol Ayehu
 
-### Acknowledgments
+### Acknowledgments:
 Iolite Cohort
 
 ### Tech-Stack Used:
