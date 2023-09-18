@@ -170,19 +170,16 @@ function IndTopicPage() {
                     backgroundColor: usernameColors[comment.username],
                     padding: "8px",
                     marginRight: "10px",
-                    borderRadius: 4,
+                    borderRadius: 9,
                   }}
                 >
-                  <div className="comment-username">{comment.username}</div>
+                  <div    style={{
+                    backgroundColor: "white",
+                    padding: "5px",
+                    borderRadius: 6,
+                  }} className="comment-username">{comment.username}</div>
                 </div>
                 <div className="comment-text">{comment.text}</div>
-                <IconButton
-                  onClick={() => handlePenny(comment.id)}
-                  color={(comment.id) ? "primary" : "default"}
-                >
-                
-                </IconButton>
-                <div>{pennies.id} likes</div>
               </div>
             </CommentPaper>
           </div>
