@@ -9,7 +9,7 @@ function RegisterPage() {
   return (
     <div className="register-container">
       <div className="left-content">
-        <img height={250} src={require("./taplap.png")} alt="pennies" />
+        <img height={80} src={require("./taplap.png")} alt="pennies" />
         <h3>
           Welcome to our online community,<br></br> a place where vulnerability,
           genuine interests,<br></br> and curious ideas are celebrated.
