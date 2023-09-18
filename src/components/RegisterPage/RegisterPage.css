@@ -1,15 +1,15 @@
 .register-container {
    
-    align-items: center; /* Vertically center content */
-    justify-content: center; /* Horizontally center content */
-    height: 80vh; /* Adjust the height as needed */
+    align-items: center; 
+    justify-content: center; 
+    height: 80vh; 
   }
   
   .left-content {
     padding-top: -1000;
     
     
-    text-align: center; /* Center the image horizontally */
+    text-align: center; 
  
   }
   

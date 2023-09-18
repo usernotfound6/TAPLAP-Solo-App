@@ -33,7 +33,7 @@ function ProfilePage() {
         </CardContent>
       
 
-      <Card elevation={24}  sx={{ height: 200, marginBottom: 4, marginLeft:3,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 930}} className="profile-card">
+      <Card elevation={24}  sx={{ height: 200, marginBottom: 4, marginLeft:23,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 930}} className="profile-card">
         <CardContent>
           <Typography variant="h5">Bio:</Typography>
           <Typography paragraph>{user.bio}</Typography>
@@ -41,7 +41,7 @@ function ProfilePage() {
         </CardContent>
       </Card>
 
-      <Card elevation={24}  sx={{ marginBottom: 4, marginLeft:3,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 930}} className="profile-card">
+      <Card elevation={24}  sx={{ marginBottom: 4, marginLeft:23,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 470}} className="profile-card">
         <CardContent>
           <Typography variant="h6">Contact:</Typography>
           <Typography paragraph>{user.contact}</Typography>
@@ -49,7 +49,7 @@ function ProfilePage() {
         </CardContent>
       </Card>
 
-      <Card elevation={24}  sx={{ height: 100, marginBottom: 4, marginLeft:3,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 100}} className="profile-card">
+      <Card elevation={24}  sx={{ height: 100, marginBottom: 4, marginLeft:23,  marginRight:3, borderRadius: 5, display: "flex", backgroundColor: "beige", maxWidth: 100}} className="profile-card">
         <CardContent>
           <Typography variant="h6">ID:</Typography>
           <Typography  variant="h5" paragraph>{user.id}</Typography>

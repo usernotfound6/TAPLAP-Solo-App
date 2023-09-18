@@ -47,7 +47,7 @@ function CreateTopicPage() {
          marginRight: 10, 
          marginLeft: 10,  
          marginBottom: 4,
-         minHeight: 500,
+         minHeight: 200,
          minWidth: 400,
          marginTop: 1,
          borderRadius: 4,
@@ -66,7 +66,7 @@ function CreateTopicPage() {
             variant="outlined"
             fullWidth
             multiline
-            rows={17}
+            rows={10}
             value={description}
             onChange={(event) => setDescription(event.target.value)}
             sx={{ marginBottom: 2 }} />

@@ -99,16 +99,16 @@ function EditTopicForm(props) {
             borderRadius: 5,
             p: 4,
             textAlign: 'center',
-            marginBottom: 4,
-            marginTop: -9,
+            marginBottom: 6,
+            marginTop: -14
           }}
         >
           <CardContent
             sx={{
               backgroundColor: 'beige',
               padding: -30,
-              marginTop: -6.5,
-              marginBottom: -7.5,
+              marginTop: -7.3,
+              marginBottom: -6.5,
               maxWidth: 330,
             }}
           >
@@ -124,7 +124,7 @@ function EditTopicForm(props) {
             marginRight: 10,
             marginLeft: 10,
             marginBottom: 4,
-            minHeight: 500,
+            minHeight: 300,
             minWidth: 400,
             marginTop: 1,
             borderRadius: 4,
@@ -146,7 +146,7 @@ function EditTopicForm(props) {
               variant="outlined"
               fullWidth
               multiline
-              rows={17}
+              rows={10}
               value={edittopic.topic_description}
               onChange={handleTopicDescriptionChange}
               sx={{ marginBottom: 2 }}

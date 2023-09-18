@@ -17,7 +17,7 @@ import ".//IndTopicPage.css";
 
 const CommentPaper = styled(Paper)(({ theme }) => ({
   marginBottom: 18,
-  marginLeft: 30,
+  marginLeft: 190,
   marginRight: 30,
   padding: theme.spacing(2),
   maxWidth: 1045,
@@ -140,7 +140,7 @@ function IndTopicPage() {
           backgroundColor: "beige",
           minWidth: 130,
           marginRight: 90,
-          marginLeft: 1,
+          marginLeft: 14,
           maxWidth: 130,
           maxHeight: 60,
           marginBottom: 4,
@@ -162,7 +162,7 @@ function IndTopicPage() {
 
         return (
           <div key={comment.id}>
-            <CommentPaper sx={{ backgroundColor: "beige" }} elevation={9}>
+            <CommentPaper sx={{ backgroundColor: "beige" }} elevation={19}>
               <div style={{ display: "flex" }}>
                 <div
                   className="comment-username-box"
@@ -195,7 +195,7 @@ function IndTopicPage() {
         style={{
           width: "50%",
           marginTop: 20,
-          marginLeft: 45,
+          marginLeft: 275,
           borderRadius: 12,
         }}
       />

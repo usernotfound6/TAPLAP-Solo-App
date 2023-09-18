@@ -84,7 +84,7 @@ function MyTopicsPage() {
       </div>
       <section className="mytopics">
         {mytopics.map((mytopic) => (
-          <Card key={mytopic.id} elevation={24} sx={{ backgroundColor: "beige", marginBottom: 5, borderRadius: 4 }}>
+          <Card key={mytopic.id} elevation={24} sx={{ marginLeft:50, marginRight:50, backgroundColor: "beige", marginBottom: 5, borderRadius: 4 }}>
             <CardContent sx={{ padding: -4, marginLeft: 1.5, marginTop: -4, marginBottom: 1 }}>
               <div>
                 <h1>{mytopic.topic_name}</h1>

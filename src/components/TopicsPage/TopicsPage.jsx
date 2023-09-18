@@ -78,7 +78,7 @@ function TopicsPage() {
         </Card>
       </div>
       <section className="topics">
-        <Grid sx={{marginLeft: 8, marginRight: 8 }}
+        <Grid sx={{marginLeft: 18, marginRight: 18 }}
         alignItems={"center"} 
         container xs={12} spacing={0} columnGap={0} rowGap={2}>
           {topics.map((topic) => (
@@ -98,7 +98,7 @@ function TopicsPage() {
                 {topic.topic_description}
                 </Typography> */}
                 <div style={textOverlayStyle}>
-        <Typography variant="h6" style={{ fontSize: '22px', fontWeight: 'bold' , fontFamily: '-moz-initial'  }}>{topic.topic_name} </Typography>
+        <Typography variant="h6" style={{ fontSize: '28px', fontWeight: 'bold' , fontFamily: '-moz-initial'  }}>{topic.topic_name} </Typography>
         {/* <Typography variant="body2" style={{ fontSize: '12px' }}>{topic.topic_description}</Typography> */}
       </div>
                 {/* <p>User ID: {topic.user_id}</p> */}

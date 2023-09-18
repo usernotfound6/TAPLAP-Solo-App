@@ -7,7 +7,9 @@
 .centered-content {
     text-align: center; /* Center text horizontally within the div */
   }
-
+  .comment-text{
+    justify-content: center  !important;
+  }
   h1 {
     font-size: xx-large;
   }
