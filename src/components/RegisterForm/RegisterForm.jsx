@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  Button,
+  ThemeProvider, createTheme
+} from '@mui/material';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -19,42 +27,71 @@ function RegisterForm() {
     });
   }; // end registerUser
 
+  const cardStyle = {
+    maxWidth: 300,
+    margin: '0 auto',
+    marginTop: 150,
+    padding: 20,
+    textAlign: 'center',
+    borderRadius: 30,
+    backgroundColor: 'lightgrey',
+  };
+  
+  const formStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+  };
+  
+  const inputStyle = {
+    margin: 'auto',
+    padding: 12,
+    minWidth: 250,
+  };
+  
+  const buttonStyle = {
+    margin: 'auto',
+    maxWidth: 100,
+  };
+
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
-      {errors.registrationMessage && (
-        <h3 className="alert" role="alert">
-          {errors.registrationMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
-    </form>
+    <ThemeProvider theme={createTheme()}>
+      <Card elevation={24} style={cardStyle}>
+        <CardContent>
+          <Typography variant="h4" component="h2">
+            Register
+          </Typography>
+          <form style={formStyle} onSubmit={registerUser}>
+            <TextField
+              style={inputStyle}
+              placeholder="Username"
+              type="text"
+              name="username"
+              required
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <TextField
+              style={inputStyle}
+              placeholder="Password"
+              type="password"
+              name="password"
+              required
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <Button
+              style={buttonStyle}
+              variant="contained"
+              color="warning"
+              type="submit"
+              name="submit"
+            >
+              Register
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+    </ThemeProvider>
   );
 }
 

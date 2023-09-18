@@ -37,7 +37,6 @@ function Nav() {
               My Topics
             </Link>
 
-            <LogOutButton className="navLink" to="/login"/>
           </>
         )}
 
@@ -47,6 +46,9 @@ function Nav() {
         <Link className="navLink" to="/profile">
           Profile
         </Link>
+        {user.id && (
+        <LogOutButton className="navLink" to="/login"/>
+        )}
       </div>
     </div>
   );

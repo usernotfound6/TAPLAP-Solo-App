@@ -33,9 +33,9 @@ function CreateTopicPage() {
   };
 
   return (
-    <><Container maxWidth="xs" sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
-      <Card elevation={24} sx={{  backgroundColor: "beige",borderRadius: 5, p: 4, textAlign: "center", marginBottom: 4, marginTop: -9  }}>
-      <CardContent sx={{  backgroundColor: "beige", padding: -30, marginTop: -6.5, marginBottom: -7.5, maxWidth: 330}}>
+    <><Container maxWidth="xs" sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <Card elevation={24} sx={{  backgroundColor: "beige",borderRadius: 5, p: 4, textAlign: "center", marginBottom: 4, marginTop: 3 }}>
+      <CardContent sx={{  display: 'flex', backgroundColor: "beige", padding: -30, marginTop: -6.5, marginBottom: -7.5, maxWidth: 330}}>
         <h1>
           What's On Your Mind?
         </h1>

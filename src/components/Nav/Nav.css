@@ -7,7 +7,7 @@
   background-size: 650px;
   margin: 0 0 20px;
   background-color: #dc9428;
-  border-radius: 15px;
+  border-radius: 20px;
   overflow: visible;
   height: 48pt;
 }
@@ -31,12 +31,13 @@
 }
 
 .navLink {
-  display:inline-block;
+  display: inline-block;
   color: #ffffff;
   /* background-color: #dc9428; */
   /* background-image: url('gradnav2.png');  */
   /* background-size: 750px; */
-  text-align:center;
+  text-align: center;
+  margin-right: 0px;
   padding: 0px 60px;
   text-decoration: none;
   font-size: 15x;
