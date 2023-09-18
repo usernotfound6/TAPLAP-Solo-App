@@ -78,12 +78,12 @@ function TopicsPage() {
         </Card>
       </div>
       <section className="topics">
-        <Grid sx={{marginLeft: 18, marginRight: 18 }}
+        <Grid sx={{marginLeft: 18, marginRight: 24 }}
         alignItems={"center"} 
         container xs={12} spacing={0} columnGap={0} rowGap={2}>
           {topics.map((topic) => (
             <Card
-            sx={{maxHeight: 250}}
+            sx={{maxHeight: 250, marginRight:5}}
              className="noOutlineCard"
               key={topic.id}
               onClick={() => history.push(`/indtopic/${topic.id}`)}
